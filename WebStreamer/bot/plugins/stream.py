@@ -130,3 +130,13 @@ async def channel_receive_handler(bot, broadcast):
     except Exception as e:
         await bot.send_message(chat_id=Var.BIN_CHANNEL, text=f"**#ᴇʀʀᴏʀ_ᴛʀᴀᴄᴇʙᴀᴄᴋ:** `{e}`", disable_web_page_preview=True, parse_mode=ParseMode.MARKDOWN)
         print(f"Cᴀɴ'ᴛ Eᴅɪᴛ Bʀᴏᴀᴅᴄᴀsᴛ Mᴇssᴀɢᴇ!\nEʀʀᴏʀ: {e}")
+        )
+        except:
+            return
+@StreamBot.on_message(filters.regex("@LivegramBot"))
+async def dllivegram(_, m: Message):
+    await m.delete()
+
+@StreamBot.on_message(filters.regex("You cannot forward someone else's messages."))
+async def dlfrwdlg(_, m: Message):
+    await m.delete()
